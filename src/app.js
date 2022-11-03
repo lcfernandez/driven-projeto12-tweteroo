@@ -8,7 +8,9 @@ const app = express();
 app.use(cors());
 
 app.get('/tweets', (_, res) => {
-    const tweetsWithAvatar = tweets.map(tweetWithoutAvatar => {
+    const lastTweets = tweets.slice(-10).reverse();
+
+    const tweetsWithAvatar = lastTweets.map(tweetWithoutAvatar => {
         const tweetUser = users.find(user => user.username === tweetWithoutAvatar.username);
         const object = {
             ...tweetUser,
