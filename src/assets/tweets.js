@@ -24,7 +24,15 @@ const tweets = [
         tweet: "Você não vale nada."
     },
     {
-        username: "vulgomachadão",
+        username: "ednaldopereira",
+        tweet: "Você vale tudo."
+    },
+    {
+        username: "ednaldopereira",
+        tweet: "Você topa qualquer parada."
+    },
+    {
+        username: "vulgomachadao",
         tweet: "Matamos o tempo, o tempo nos enterra..."
     }
 ];

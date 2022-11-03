@@ -17,7 +17,7 @@ app.get('/tweets', (_, res) => {
 
         return object;
     });
-    res.send(tweetsWithAvatar); 
+    res.send(tweetsWithAvatar);
 });
 
 app.listen(5000, () => {
