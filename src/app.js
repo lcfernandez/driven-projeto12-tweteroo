@@ -6,6 +6,7 @@ import users from "./assets/users.js"
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 app.get("/tweets", (req, res) => {
     const lastTweets = tweets.slice(-10).reverse();
@@ -20,6 +21,11 @@ app.get("/tweets", (req, res) => {
 
     res.send(tweetsWithAvatar);
 });
+
+app.post("/tweets", (req, res) => {
+    tweets.push(req.body);
+    res.send("OK");
+}); 
 
 app.post("/sign-up", (req, res) => {
     users.push(req.body);
