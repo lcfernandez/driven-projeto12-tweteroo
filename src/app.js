@@ -5,11 +5,11 @@ import tweets from "./assets/tweets.js"
 import users from "./assets/users.js"
 
 
-// creates an instance of express
+// instance of express
 const app = express();
 
 
-// config
+// configs
 app.use(cors());
 app.use(express.json());
 
@@ -45,6 +45,4 @@ app.post("/tweets", (req, res) => {
 
 
 // starts the server
-app.listen(5000, () => {
-    console.log("Server running in port: 5000");
-});
+app.listen(5000, () => console.log(`Server running in port: ${5000}`));
