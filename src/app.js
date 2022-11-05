@@ -4,10 +4,17 @@ import cors from "cors";
 import tweets from "./assets/tweets.js"
 import users from "./assets/users.js"
 
+
+// creates an instance of express
 const app = express();
+
+
+// config
 app.use(cors());
 app.use(express.json());
 
+
+// GET function
 app.get("/tweets", (req, res) => {
     const lastTweets = tweets.slice(-10).reverse();
     const tweetsWithAvatar = lastTweets.map(tweet => {
@@ -22,16 +29,22 @@ app.get("/tweets", (req, res) => {
     res.send(tweetsWithAvatar);
 });
 
-app.post("/tweets", (req, res) => {
-    tweets.push(req.body);
-    res.send("OK");
-}); 
 
+// POST functions
 app.post("/sign-up", (req, res) => {
     users.push(req.body);
+
     res.send("OK");
 });
 
+app.post("/tweets", (req, res) => {
+    tweets.push(req.body);
+
+    res.send("OK");
+}); 
+
+
+// starts the server
 app.listen(5000, () => {
     console.log("Server running in port: 5000");
 });
