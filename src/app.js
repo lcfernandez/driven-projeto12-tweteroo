@@ -89,14 +89,20 @@ app.post("/sign-up", (req, res) => {
 });
 
 app.post("/tweets", (req, res) => {
-    const { username, tweet } = req.body;
+    const username = req.headers.user;
+    const { tweet } = req.body;
 
     if (username === undefined || tweet === undefined) {
         return res.status(422).send("Todos os campos são obrigatórios!");
     }
 
     if (validUsername(username) && typeof tweet === "string" && tweet.trim() !== "") {
-        tweets.unshift(req.body);
+        tweets.unshift(
+            {
+                username,
+                tweet
+            }
+        );
 
         return res.status(201).send("OK");
     }
@@ -105,10 +111,9 @@ app.post("/tweets", (req, res) => {
 }); 
 
 
-// auxiliary functions
-
-// checks if it is a string and has only letters, numbers and underscore
+// auxiliary function allowing only strings of letters, numbers or underscores
 // (empty string also returns false)
+
 function validUsername(username) {
     return /^\w+$/.test(username) && typeof username === "string";
 }
