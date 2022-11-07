@@ -39,7 +39,7 @@ app.post("/sign-up", (req, res) => {
     const { username, avatar } = req.body;
 
     if (username === undefined || avatar === undefined) {
-        return res.status(422).send({message: "Todos os campos são obrigatórios!"});
+        return res.status(422).send("Todos os campos são obrigatórios!");
     }
 
     const validURL = (url) => {
@@ -55,10 +55,7 @@ app.post("/sign-up", (req, res) => {
     }
 
     if (validUsername(username) && validURL(avatar)) {
-        users.push({
-            username,
-            avatar
-        });
+        users.push(req.body);
 
         return res.send("OK");
     }
@@ -67,9 +64,19 @@ app.post("/sign-up", (req, res) => {
 });
 
 app.post("/tweets", (req, res) => {
-    tweets.push(req.body);
+    const { username, tweet } = req.body;
 
-    res.send("OK");
+    if (username === undefined || tweet === undefined) {
+        return res.status(422).send("Todos os campos são obrigatórios!");
+    }
+
+    if (validUsername(username) && typeof tweet === "string" && tweet.trim() !== "") {
+        tweets.push(req.body);
+
+        return res.send("OK");
+    }
+
+    res.sendStatus(400);
 }); 
 
 
