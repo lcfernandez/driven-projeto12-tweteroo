@@ -57,7 +57,7 @@ app.post("/sign-up", (req, res) => {
     if (validUsername(username) && validURL(avatar)) {
         users.push(req.body);
 
-        return res.send("OK");
+        return res.status(201).send("OK");
     }
     
     res.sendStatus(400);
@@ -73,7 +73,7 @@ app.post("/tweets", (req, res) => {
     if (validUsername(username) && typeof tweet === "string" && tweet.trim() !== "") {
         tweets.push(req.body);
 
-        return res.send("OK");
+        return res.status(201).send("OK");
     }
 
     res.sendStatus(400);
