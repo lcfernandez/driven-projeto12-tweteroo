@@ -1,9 +1,6 @@
 import express from "express";
 import cors from "cors";
 
-import tweets from "./assets/tweets.js"
-import users from "./assets/users.js"
-
 
 // instance of express
 
@@ -16,7 +13,13 @@ app.use(cors());
 app.use(express.json());
 
 
-// GET function
+// global variables
+
+const tweets = [];
+const users = [];
+
+
+// GET functions
 
 app.get("/tweets", (req, res) => {
     const page = parseInt(req.query.page);
@@ -111,7 +114,7 @@ app.post("/tweets", (req, res) => {
 }); 
 
 
-// auxiliary function allowing only strings of letters, numbers or underscores
+// auxiliary function, allows only strings of letters, numbers or underscores
 // (empty string also returns false)
 
 function validUsername(username) {
