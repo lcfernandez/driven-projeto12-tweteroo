@@ -19,15 +19,23 @@ app.use(express.json());
 // GET function
 
 app.get("/tweets", (req, res) => {
-    const lastTweets = tweets.slice(-10).reverse();
-    const tweetsWithAvatar = lastTweets.map(tweet => {
-        const tweetUser = users.find(user => user.username === tweet.username);
+    const page = parseInt(req.query.page);
 
-        return {
-            ...tweetUser,
-            tweet: tweet.tweet
-        };
-    });
+    if (!page || page < 0) {
+        return res.status(400).send("Informe uma página válida!");
+    }
+
+    const lastPaginatedTweets = tweets.slice(page * 10 - 10, page * 10);
+    const tweetsWithAvatar = lastPaginatedTweets.map(
+        tweet => {
+            const tweetUser = users.find(user => user.username === tweet.username);
+
+            return {
+                ...tweetUser,
+                tweet: tweet.tweet
+            };
+        }
+    );
 
     res.send(tweetsWithAvatar);
 });
@@ -35,13 +43,16 @@ app.get("/tweets", (req, res) => {
 app.get("/tweets/:username", (req, res) => {
     const username = req.params.username;
     const tweetUser = users.find(user => user.username === username);
+    const userTweets = tweets.filter(tweet => tweet.username === username);
 
-    const tweetsWithAvatar = tweets.reverse().filter(tweet => tweet.username === username).map(tweet => {
-        return {
-            ...tweetUser,
-            tweet: tweet.tweet
-        };
-    });
+    const tweetsWithAvatar = userTweets.map(
+        tweet => {
+            return {
+                ...tweetUser,
+                tweet: tweet.tweet
+            };
+        }
+    );
 
     res.send(tweetsWithAvatar);
 });
@@ -85,7 +96,7 @@ app.post("/tweets", (req, res) => {
     }
 
     if (validUsername(username) && typeof tweet === "string" && tweet.trim() !== "") {
-        tweets.push(req.body);
+        tweets.unshift(req.body);
 
         return res.status(201).send("OK");
     }

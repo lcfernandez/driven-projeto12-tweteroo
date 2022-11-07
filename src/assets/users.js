@@ -14,6 +14,14 @@ const users = [
     {
         username: "vulgomachadao", 
         avatar: "https://cdn.brasildefato.com.br/media/d3e65c869db03180a7d34b1569ccdc04.jpg" 
+    },
+    {
+        username: "BlueJeansBabyTatua", 
+        avatar: "https://i.ytimg.com/vi/fWJB2owqS7s/mqdefault.jpg" 
+    },
+    {
+        username: "valdisnei", 
+        avatar: "https://i.redd.it/1khqy0t8us691.jpg" 
     }
 ];
 

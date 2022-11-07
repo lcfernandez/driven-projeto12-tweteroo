@@ -1,27 +1,27 @@
 const tweets = [
     {
-        username: "advogadopaloma",
-        tweet: "Bandindinhos!"
+        username: "valdisnei",
+        tweet: "carai"
     },
     {
-        username: "paolabracho",
-        tweet: "Usurpar que é bom, ninguém quer..."
+        username: "BlueJeansBabyTatua",
+        tweet: "Se não te quero, BYE, BYE!"
     },
     {
-        username: "advogadopaloma",
-        tweet: "Bandindinha!"
+        username: "BlueJeansBabyTatua",
+        tweet: "Mas se te quero, te quero..."
     },
     {
-        username: "advogadopaloma",
-        tweet: "Eu, Advogado Paloma, estou aqui na Berlin, no último andar, para fazer JUSTIÇA!"
+        username: "BlueJeansBabyTatua",
+        tweet: "Subir pelas paredes é demais!"
     },
     {
-        username: "advogadopaloma",
-        tweet: "Porque EU sou o paladino da Lei!"
+        username: "vulgomachadao",
+        tweet: "Matamos o tempo, o tempo nos enterra..."
     },
     {
         username: "ednaldopereira",
-        tweet: "Você não vale nada."
+        tweet: "Você topa qualquer parada."
     },
     {
         username: "ednaldopereira",
@@ -29,11 +29,27 @@ const tweets = [
     },
     {
         username: "ednaldopereira",
-        tweet: "Você topa qualquer parada."
+        tweet: "Você não vale nada."
     },
     {
-        username: "vulgomachadao",
-        tweet: "Matamos o tempo, o tempo nos enterra..."
+        username: "advogadopaloma",
+        tweet: "Porque EU sou o paladino da Lei!"
+    },
+    {
+        username: "advogadopaloma",
+        tweet: "Eu, Advogado Paloma, estou aqui na Berlin, no último andar, para fazer JUSTIÇA!"
+    },
+    {
+        username: "advogadopaloma",
+        tweet: "Bandindinha!"
+    },
+    {
+        username: "paolabracho",
+        tweet: "Usurpar que é bom, ninguém quer..."
+    },
+    {
+        username: "advogadopaloma",
+        tweet: "Bandindinhos!"
     }
 ];
 
