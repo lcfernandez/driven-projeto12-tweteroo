@@ -32,6 +32,20 @@ app.get("/tweets", (req, res) => {
     res.send(tweetsWithAvatar);
 });
 
+app.get("/tweets/:username", (req, res) => {
+    const username = req.params.username;
+    const tweetUser = users.find(user => user.username === username);
+
+    const tweetsWithAvatar = tweets.reverse().filter(tweet => tweet.username === username).map(tweet => {
+        return {
+            ...tweetUser,
+            tweet: tweet.tweet
+        };
+    });
+
+    res.send(tweetsWithAvatar);
+});
+
 
 // POST functions
 
